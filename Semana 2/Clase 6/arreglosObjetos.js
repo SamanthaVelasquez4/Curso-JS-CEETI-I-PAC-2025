@@ -32,5 +32,14 @@ personas.push({
 //console.log(personas[2]);
 
 //buscar la persona con dicha identidad
-let persona = personas.filter(objeto => objeto.genero == false);
+let persona = personas.filter(objeto => objeto.genero == true);
 console.log(persona);
+
+//buscar un elemento
+let persona2 = personas.find(function(objeto){
+    if(objeto.identidad == '1701-1995-3265'){
+        return objeto;
+    }
+});
+
+console.log(persona2);
