@@ -28,7 +28,7 @@ const users = [
         phone: "+34 622 345 678",
         location: "Valencia, España",
         image: "https://randomuser.me/api/portraits/women/44.jpg",
-        skills: ["Figma", "Sketch", "Photoshop", "User Research"]
+        skills: ["Figma", "Sketch"]
     },
     {
         id: 4,
@@ -38,7 +38,7 @@ const users = [
         phone: "+34 633 456 789",
         location: "Sevilla, España",
         image: "https://randomuser.me/api/portraits/men/75.jpg",
-        skills: ["JavaScript", "Node.js", "MongoDB", "Express"]
+        skills: ["JavaScript", "Node.js", "MongoDB"]
     },
     {
         id: 5,
@@ -48,7 +48,7 @@ const users = [
         phone: "+34 644 567 890",
         location: "Bilbao, España",
         image: "https://randomuser.me/api/portraits/women/33.jpg",
-        skills: ["Scrum", "Gestión", "Liderazgo", "Planificación"]
+        skills: ["Scrum"]
     },
     {
         id: 6,
@@ -63,4 +63,35 @@ const users = [
 ];
 
 //Funcion para renderizar
+let container = document.getElementById("usersContainer");
 
+users.forEach(function(persona){
+    
+    let habilidades = "";
+    persona.skills.forEach(function(skill){
+        habilidades+=`<span class="skill-tag">${skill}</span>`;
+    });
+
+    container.innerHTML+= `<div class="user-card">
+    <img src="${persona.image}" alt="imagen del usuario" class="user-image">
+    <div class="user-info">
+        <h2 class="user-name">${persona.name}</h2>
+        <p class="user-email">${persona.email}</p>
+        
+        <div class="user-details">
+            <p><strong>Cargo:</strong> ${persona.position}</p>
+            <p><strong>Teléfono:</strong> ${persona.phone}</p>
+            <p><strong>Ubicación:</strong> ${persona.location}</p>
+        </div>
+        
+        <div class="user-skills">
+            ${habilidades}
+        </div>
+        
+        <div class="actions">
+            <button class="btn btn-contact" onclick="">Contactar</button>
+            <button class="btn btn-profile" onclick="">Ver Perfil</button>
+        </div>
+    </div>
+    </div>`;
+})
