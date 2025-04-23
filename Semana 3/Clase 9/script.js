@@ -10,7 +10,8 @@ document.getElementById("satisfaccion").addEventListener('input', function(){
 document.getElementById("miFormulario").addEventListener('submit', function(e){
     e.preventDefault();
     
-
+    //validar, obtener, mostrar
+    console.log(obtenerValoresFormulario());
 })
 
 
@@ -37,4 +38,21 @@ function obtenerValoresFormulario(){
         }
     })
     
+    formData.intereses = [];
+    //Checkboxes
+    document.querySelectorAll('input[name="intereses"]').forEach(function (interes){
+        if (interes.checked){
+            formData.intereses.push(interes.value);
+        }
+    });
+
+    formData.comentarios = form.comentarios.value;
+    
+    // Obtener archivo (solo el nombre)
+    formData.foto = form.foto.files[0]?.name || '';
+    
+    formData.satisfaccion = form.satisfaccion.value;
+    formData.colorFavorito = form.colorFavorito.value;
+    
+    return formData;
 }

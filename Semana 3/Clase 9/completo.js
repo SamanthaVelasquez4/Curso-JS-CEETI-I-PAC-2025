@@ -10,11 +10,15 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
     // Validar formulario
     if (validarFormulario()) {
         // Obtener todos los valores
-        const formData = obtenerValoresFormulario();
+        const datos = obtenerValoresFormulario();
         
         // Mostrar resultados
-        mostrarResultados(formData);
+        mostrarResultados(datos);
+    }else{
+        console.log("Alguno de los campos esta incorrecto");
     }
+
+    
 });
 
 // Función para validar el formulario
@@ -36,7 +40,7 @@ function validarFormulario() {
     if (email === '') {
         document.getElementById('errorEmail').textContent = 'El email es requerido';
         valido = false;
-    } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+    } else if (!/^\S+@\S+\.\S+$/.test(email)) {//regex
         document.getElementById('errorEmail').textContent = 'Ingrese un email válido';
         valido = false;
     }
